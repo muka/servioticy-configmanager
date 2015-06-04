@@ -1,6 +1,6 @@
 /**
  *
- * Copyright 2014 CREATE-NET
+ * Copyright 2015 CREATE-NET
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,6 +31,7 @@ public class Configuration {
     public Auth auth;
     public Elasticsearch elasticsearch;
     public Logs logs;
+    public Broker broker;
 
     public Configuration() {}
 
@@ -57,6 +58,8 @@ public class Configuration {
                 return this.paths.get(inKey);
             case "logs":
                 return this.logs.get(inKey);
+            case "broker":
+                return this.broker.get(inKey);
         }
 
         throw new ConfigPropertyNotFound();
@@ -102,6 +105,14 @@ public class Configuration {
 
     public void setLogs(Logs logs) {
         this.logs = logs;
+    }
+
+    public Broker getBroker() {
+        return broker;
+    }
+
+    public void setBroker(Broker broker) {
+        this.broker = broker;
     }
 
 }
