@@ -25,10 +25,13 @@ abstract public class Configuration implements IConfiguration {
     
     protected File configurationFile;
 
+    
+    @Override
     public File getConfigurationFile() {
         return configurationFile;
     }
 
+    @Override
     public void setConfigurationFile(File configurationFile) {
         this.configurationFile = configurationFile;
     }

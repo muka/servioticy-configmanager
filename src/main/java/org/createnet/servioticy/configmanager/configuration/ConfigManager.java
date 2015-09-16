@@ -39,16 +39,16 @@ import org.yaml.snakeyaml.constructor.Constructor;
 public class ConfigManager implements IConfigurationManager, Serializable
 {
 
-    Logger logger = LoggerFactory.getLogger(ConfigManager.class);
+    protected Logger logger = LoggerFactory.getLogger(ConfigManager.class);
     
-    String _defaultSource = "/etc/servioticy";
-    String _defaultFile = "config.yml";
+    protected String _defaultSource = "/etc/servioticy";
+    protected String _defaultFile = "config.yml";
 
-    String defaultSource;
-    String defaultFile;
+    protected String defaultSource;
+    protected String defaultFile;
 
-    String defaultProperties = "/config.properties";
-    String defaultConfiguration = "/default.yml";
+    protected String defaultProperties = "/config.properties";
+    protected String defaultConfiguration = "/default.yml";
 
     static HashMap<String, String> resolvedCache = new HashMap<>();
     
@@ -78,7 +78,7 @@ public class ConfigManager implements IConfigurationManager, Serializable
 
         } catch (Exception ex) {
 
-            logger.warn("Cannot read properties file {0}", defaultProperties);
+            logger.warn("Cannot read properties file {}", defaultProperties);
 
             defaultSource = _defaultSource;
             defaultFile = _defaultFile;
@@ -96,7 +96,7 @@ public class ConfigManager implements IConfigurationManager, Serializable
         for (String path : paths) {
             
             // try to load config specified configuration
-            logger.info("Load configuration, checking {0}", path);
+            logger.info("Load configuration, checking {}", path);
             
             file = new File(path);
             input = this.tryLoad(file);
