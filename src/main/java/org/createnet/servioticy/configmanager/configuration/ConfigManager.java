@@ -110,13 +110,21 @@ public class ConfigManager implements IConfigurationManager, Serializable
         if(input == null) {
             throw new ConfigurationFileNotFound();
         }
-
-        Constructor constructor = new Constructor(classType);
-        Yaml yaml = new Yaml(constructor);
         
-        Configuration conf = (Configuration) yaml.load(input);
-        conf.setConfigurationFile(file);
+        Configuration conf = null;
+        try {
+            
+            Constructor constructor = new Constructor(classType);
+            Yaml yaml = new Yaml(constructor);
 
+            conf = (Configuration) yaml.load(input);
+            conf.setConfigurationFile(file);
+
+        }
+        catch(Exception e) {
+            logger.error(e.getMessage());
+        }
+        
         return conf;
     }
 
