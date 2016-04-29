@@ -78,7 +78,7 @@ public class ConfigManager implements IConfigurationManager, Serializable
 
         } catch (Exception ex) {
 
-            logger.warn("Cannot read properties file {0}", defaultProperties);
+            logger.warn("Cannot read properties file {}", defaultProperties);
 
             defaultSource = _defaultSource;
             defaultFile = _defaultFile;
@@ -96,7 +96,7 @@ public class ConfigManager implements IConfigurationManager, Serializable
         for (String path : paths) {
             
             // try to load config specified configuration
-            logger.info("Load configuration, checking {0}", path);
+            logger.info("Load configuration, checking {}", path);
             
             file = new File(path);
             input = this.tryLoad(file);
